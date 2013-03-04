@@ -263,23 +263,26 @@ var api_structure = {
               "since": "some_message_id",
             }
           },
-          "subset": {
-            "user_message_body": {
-              "uri": "message/(.*)/body/",
-              "subset": null
-            },
-            "user_message": {
-              "uri": "message/([^/]*)/",
-              "subset": null
-            },
-            "user_message_read": {
-              "uri": "message/(.*)/read/",
-              "subset": null
-            }            
-          }
+          "user_message_body": {
+            "uri": "message/(.*)/body/",
+            "subset": null
+          },
+          "user_message": {
+            "uri": "{user_id}/message/{message_body}/",
+            "subset": null
+          },
+          "user_message_read": {
+            "uri": "{user_id}/message/{message}/read/",
+            "subset": null
+          }            
         },
         "user_messages_delete": {
-          "uri": "messages/delete/",
+          "uri": "{user_id}/messages/delete/",
+          "actions": {
+            "POST": {
+              "user_id": "some_user_id",
+            }
+          },
           "subset": null
         },
         "user_creds_reset": {
@@ -293,12 +296,13 @@ var api_structure = {
           },
           "subset": null
         },
-        "user_alias": {
-          "uri": "alias/",
-          "subset": null
-        },
         "user_messages_unread": {
-          "uri": "messages/unread/",
+          "uri": "{user_id}/messages/unread/",
+          "actions": {
+            "GET": {
+              "user_id": "some_user_id",
+            }
+          },
           "subset": null
         },
         "user_with_id": {
@@ -316,19 +320,7 @@ var api_structure = {
           },
           "subset": null
         },
-        "user_recover_key": {
-          "uri": "recover/(.*)/",
-          "subset": null
-        },
-        "user_recover": {
-          "uri": "recover/",
-          "subset": null
-        }        
       }
-    },
-    "api_users": {
-      "uri": "/api/users/",
-      "subset": null
     },
     "api_airmail_send": {
       "uri": "/api/airmail/send/",
@@ -393,15 +385,39 @@ var api_structure = {
     },
     "api_app": {
       "uri": "/api/app/",
+      "actions": {
+        "GET": {
+          "limit": 100,
+        }
+      },
       "subset": {
         "app_stats_iap": {
           "uri": "stats/iap/",
+          "actions": {
+            "GET": {
+              "start": "2013-02-01",
+              "end": "2013-03-01"
+            }
+          },
           "subset": null
         }        
       }
     },
     "api_feeds": {
       "uri": "/api/feeds/",
+      "actions": {
+        "POST": {
+          "feed_url": "http://example.com/atom.xml",
+          "template": {
+              "aps": {
+                  "badge": 1,
+                  "sound": "cat.caf",
+                  "alert": "New item from some place! {{ title }}"
+              }
+          },
+          "broadcast": true          
+        },
+      },
       "subset": null
     },
 }
