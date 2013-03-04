@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="/static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="/static/dui/css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="/static/dui/css/grid.css" type="text/css" />
+    <link rel="stylesheet" href="/static/dui/css/ui.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/ua_api.css" type="text/css" />
+
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
+    
+    <script type="text/javascript" src="/static/api_structure.js"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <script type="text/javascript" src="/static/ua_api.js"></script>
+    <title>Urban Airship API</title>
+</head>
+
+<body>
+  <div class="main col offset-2 eight">
+    <div>
+        <form id="main_form">
+            <fieldset>
+                <div class="">
+                    <div class="cred_set col four offset-1">
+                        <label for="app_key">App Key</label>
+                        <input type="text" name="app_key" id="app_key" class="creds" value="{{ app_key }}">
+                    </div>
+                    <div class="cred_set col four">
+                        <label for="master_secret">Master Secret</label>
+                        <input type="text" name="master_secret" id="master_secret" class="creds" value="{{ master_secret }}"><br><br>
+                    </div>
+                </div>
+            </fieldset>
+    
+            <div id="main_endpoints"></div>
+            <div class="button_container col offset-1">
+                <button id="go">Go</button>                    
+            </div><br style="clear: both">
+        </form>
+    </div>
+    <div class="col eight offset-1">
+        <textarea id="curl_command"></textarea>            
+    </div>
+  </div>
+</body>
+</html>

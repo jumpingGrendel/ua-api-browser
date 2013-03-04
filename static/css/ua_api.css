@@ -1,0 +1,44 @@
+body {
+    background-color: #AAA;
+}
+#curl_command {
+    height: 5em;
+    margin-bottom: 2em;
+}
+
+.clear {
+    clear: left;
+    margin-left: -1px;
+}
+
+.button_container {
+    clear: both;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    
+}
+
+.type_radio {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.subnode {
+    clear: both;
+    border: dotted 1px #876;
+    border-radius: 3px 3px;
+    margin-top: 3em;
+    padding: .5em;
+    padding-bottom: 1em;
+}
+
+.subnode div {
+    margin-top: 1em;
+}
+.main {
+    border: 1px solid black;
+}
+
+.extras label {
+    margin-top: .5em;
+}
