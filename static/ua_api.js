@@ -67,7 +67,7 @@ $(function() {
             n++
             var insert_point = $('.first_sub').last()
             if(!insert_point[0]) {
-              insert_point = $('<div class="col four first_sub">&nbsp;</div>')
+              insert_point = $('<div class="col four first_sub"></div>')
               $('#main_endpoints').append(insert_point)
             }
             radio.insertAfter(insert_point)

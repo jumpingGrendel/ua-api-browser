@@ -7,7 +7,6 @@ var api_structure = {
         }
       },
       "subset": {
-
         "api_device_tokens_register": {
           "uri": "{device_token}",
           "actions": {
@@ -33,7 +32,6 @@ var api_structure = {
             }
           },
         },
-
         "device_token_token": {
           "uri": "{device_token}/tags/{tag}",
           "actions": {
@@ -46,6 +44,11 @@ var api_structure = {
         },
         "device_token_count": {
           "uri": "count/",
+          "actions": {
+            "GET": {
+              
+            }
+          },
           "subset": null
         },
         "device_token_feedback": {
@@ -61,37 +64,95 @@ var api_structure = {
     },
     "api_apids": {
       "uri": "/api/apids/",
+      "actions": {
+        "GET": {
+          "limit": 10,
+        }
+      },
       "subset": null
     },
     "api_device_pins": {
       "uri": "/api/device_pins/",
+      "actions": {
+        "GET": {
+          "limit": 10,
+        }
+      },
       "subset": {
         "device_pins_pin": {
-          "uri": "{8}",
+          "uri": "{device_pin}",
+          "actions": {
+            "PUT": {
+              "device_pin": "some device pin",
+              "alias": "your_user_id",
+              "last_registration": "2009-11-06 20:41:06",
+              "created": "2009-11-06 20:41:06",
+              "active": true,
+              "tags": [
+                  "tag1",
+                  "tag2"
+              ]
+            },
+            "GET": {
+              "device_pin": "some device pin",
+            },
+            "DELETE": {
+              "device_pin": "some device pin",
+            }
+          },
           "subset": null
         }        
       }
     },
     "api_tags": {
       "uri": "/api/tags/",
+      "actions": {
+        "GET": {
+        }
+      },
       "subset": {
         "device_token_tags_tag": {
           "uri": "{tag}",
           "actions": {
             "PUT": {
-              "tag": "New Tag",
+              "tag": "some_tag",
+            },
+            "POST": {
+              "tag": "some_tag",
+              "device_tokens": {
+                  "add": [
+                      "device_token_1_to_add",
+                      "device_token_2_to_add"
+                  ],
+                  "remove": [
+                      "device_token_to_remove"
+                  ]
+              },
+              "device_pins": {
+                  "add": [
+                      "device_pin_1_to_add",
+                      "device_pin_2_to_add"
+                  ],
+                  "remove": [
+                      "device_pin_to_remove"
+                  ]
+              },
+              "apids": {
+                  "add": [
+                      "apid_1_to_add",
+                      "apid_2_to_add"
+                  ],
+                  "remove": [
+                      "apid_to_remove"
+                  ]
+              }
+            },
+            "DELETE": {
+              "tag": "some_tag"
             }
           },
           "subset": null
         },
-        "tags_batch": {
-          "uri": "batch/",
-          "subset": null
-        },
-        "tags_tag": {
-          "uri": "(.*)",
-          "subset": null
-        }        
       }
     },
     "api_push": {
@@ -124,6 +185,10 @@ var api_structure = {
           "android": {
               "alert": "hi android",
           },
+          "blackberry": {
+               "content-type": "text/plain",
+               "body": "Hello from Urban Airship!"
+          }
         }
       },
       "subset": {
@@ -250,10 +315,6 @@ var api_structure = {
         },
       },
       "subset": {
-        "user_tags": {
-          "uri": "tags/",
-          "subset": null
-        },
         "user_messages": {
           "uri": "{user_id}/messages/",
           "actions": {
@@ -427,6 +488,9 @@ var api_structure = {
           "actions": {
             "GET": {
               "feed_id": "some_feed_id"
+            },
+            "DELETE": {
+              "feed_id": "some_feed_id"              
             }
           },
           "subset": null
