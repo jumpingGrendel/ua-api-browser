@@ -1,6 +1,7 @@
 import flask
 import simplejson as json
 
+from settings import *
 try:
     from local_settings import *
 except ImportError:
