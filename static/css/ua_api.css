@@ -42,3 +42,9 @@ body {
 .extras label {
     margin-top: .5em;
 }
+
+.spacer {
+    height: 20px;
+    border: black 1px solid;
+    clear: right;
+}

@@ -65,7 +65,12 @@ $(function() {
               checked = false
             var radio = $('<div class="type_radio col three offset-1 action"><input type="radio" value="' + node + '" name="actions" checked=' + checked + ' id="' + node + '"></input><label for="' + node + '">' + node + '</label></div>')
             n++
-            radio.insertAfter($('.first_sub').last())
+            var insert_point = $('.first_sub').last()
+            if(!insert_point[0]) {
+              insert_point = $('<div class="col four first_sub">&nbsp;</div>')
+              $('#main_endpoints').append(insert_point)
+            }
+            radio.insertAfter(insert_point)
             fieldset.find('input[name=actions]').change(build_extras)
           })
         }      
@@ -205,6 +210,7 @@ $(function() {
         }
         $('.extras').remove()
         $('.action').remove()
+//        $('.first_sub').remove()
         var id = $(this).find(':selected')[0].id
         if(!id) {
           return

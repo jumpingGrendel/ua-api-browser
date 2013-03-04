@@ -415,9 +415,22 @@ var api_structure = {
                   "alert": "New item from some place! {{ title }}"
               }
           },
-          "broadcast": true          
+          "broadcast": true,      
+        },
+        "GET": {
+          
         },
       },
-      "subset": null
+      "subset": {
+        "feed_feed_id": {
+          "uri": "{feed_id}",
+          "actions": {
+            "GET": {
+              "feed_id": "some_feed_id"
+            }
+          },
+          "subset": null
+        }
+      }
     },
 }
