@@ -179,6 +179,14 @@ $(function() {
               if(uri.match('{' + key + '}')) {
                 uri = uri.replace('{' + key + '}', val)
               } else {
+                if(key === 'template') {
+                  try {
+                    val = JSON.parse(val)
+                  } catch(e) {
+                    console.log(e)
+                  }
+                  console.log(val)
+                }
                 data[key] = val
               }
             })
@@ -201,6 +209,7 @@ $(function() {
           text += "'" + api_host + uri + "'"
         }
 
+        text = text.replace(/\\/g, '')
         curl_command_container.text(text)
     }
     , select_changed = function() {

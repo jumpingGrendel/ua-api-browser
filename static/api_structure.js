@@ -469,13 +469,7 @@ var api_structure = {
       "actions": {
         "POST": {
           "feed_url": "http://example.com/atom.xml",
-          "template": {
-              "aps": {
-                  "badge": 1,
-                  "sound": "cat.caf",
-                  "alert": "New item from some place! {{ title }}"
-              }
-          },
+          "template": "{ &quot;aps&quot; : { &quot;alert&quot; : &quot;New item! - {{ title }}&quot; },&quot;android&quot;: { &quot;alert&quot;: &quot;Android users = {{ title }}&quot; }}",
           "broadcast": true,      
         },
         "GET": {
@@ -484,7 +478,7 @@ var api_structure = {
       },
       "subset": {
         "feed_feed_id": {
-          "uri": "{feed_id}",
+          "uri": "{feed_id}/",
           "actions": {
             "GET": {
               "feed_id": "some_feed_id"
