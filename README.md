@@ -13,3 +13,4 @@ optionally, create a --local_setting.py-- to store app credentials
 
 run locally by ``python main.py``, then open a browser an point to http://localhost:5000/
 
+![Screen grab](https://raw.github.com/jumpingGrendel/ua-api-browser/master/static/images/screenshot.png)
